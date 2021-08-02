@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "cityName": "Porto Seguro",
+    "rooms": [
+      {
+        "roomID": 0,
+        "categoryName": "Standard",
+        "totalPrice": 3173.07,
+        "priceDetail": {
+          "pricePerDayAdult": 1372.54,
+          "pricePerDayChild": 848.61
+        }
+      }
+    ]
+  }
+]
