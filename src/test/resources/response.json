@@ -6,10 +6,10 @@
       {
         "roomID": 0,
         "categoryName": "Standard",
-        "totalPrice": 3173.07,
+        "totalPrice": 63512.57,
         "priceDetail": {
-          "pricePerDayAdult": 1372.54,
-          "pricePerDayChild": 848.61
+          "pricePerDayAdult": 1896.17,
+          "pricePerDayChild": 326.77
         }
       }
     ]

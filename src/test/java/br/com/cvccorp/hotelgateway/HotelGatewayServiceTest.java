@@ -59,9 +59,9 @@ public class HotelGatewayServiceTest {
     void shouldGenerateTripBean() throws IOException {
 
         final var cityCode = 1032L;
-        final var totalDays = 1;
-        final var totalAdults = 1;
-        final var totalChildren = 1;
+        final var totalDays = 10;
+        final var totalAdults = 2;
+        final var totalChildren = 2;
 
         final var actualResult = service.findByCityCode(
                 cityCode,

@@ -115,20 +115,25 @@ public class HotelGatewayService {
             final int totalAdults,
             final int totalChildren
     ) {
+      /**
+       * (pricePerDayAdult * totalAdults + pricePerDayChild * totalChild) * totalDays / kickback
+       */
         return rooms.stream().map(room -> {
-                    final var priceDay = new TripPriceBean(
-                            room.price.adult * (double) totalDaysInHotel,
-                            room.price.child * (double) totalDaysInHotel
-                    );
-                    final var totalAdult = priceDay.adult * (double) totalAdults;
-                    final var totalChild = priceDay.child * (double) totalChildren;
+                    final var pricePerDayAdult = room.price.adult;
+                    final var pricePerDayChild = room.price.child;
+                    final var totalAdult = pricePerDayAdult * (double) (totalDaysInHotel + totalAdults);
+                    final var totalChild = pricePerDayChild * (double) (totalDaysInHotel + totalChildren);
                     final var totalPrice = BigDecimal
-                            .valueOf(totalAdult + totalChild).divide(kickback, RoundingMode.HALF_UP);
+                            .valueOf(totalAdult + totalChild)
+                            .divide(kickback, 2, RoundingMode.HALF_UP);
                     return new TripRoomBean(
                             room.roomId,
                             room.categoryName,
-                            totalPrice.doubleValue(),
-                            priceDay
+                            totalPrice,
+                            new TripPriceBean(
+                                pricePerDayAdult * totalAdults,
+                                pricePerDayChild * totalChildren
+                            )
                     );
                 }
         ).collect(Collectors.toUnmodifiableList());
